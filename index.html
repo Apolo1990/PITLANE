@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitlane Detail · Estética Vehicular · Córdoba</title>
+<meta name="description" content="Estética vehicular en Córdoba Capital. Tratamiento cerámico, limpieza de interior, pulido, chapa y pintura, polarizados y más. Trabajamos con turnos. Atención en local y a domicilio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0b;
+  --carbon:#141416;
+  --carbon-2:#1c1c1f;
+  --steel:#2a2a2e;
+  --gold:#d4a029;
+  --gold-bright:#f2c14e;
+  --gold-deep:#a87a16;
+  --white:#f6f6f4;
+  --grey:#9a9a9f;
+  --grey-dim:#6a6a70;
+  --line:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Barlow',system-ui,sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Saira Condensed',sans-serif;font-weight:700;line-height:.98;letter-spacing:-.01em}
+.eyebrow{
+  font-family:'Barlow Semi Condensed',sans-serif;
+  font-weight:700;text-transform:uppercase;letter-spacing:.28em;
+  font-size:.72rem;color:var(--gold);
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+
+/* ===== checkered flag motif ===== */
+.checker{
+  --sq:9px;
+  background-image:
+    linear-gradient(45deg,var(--gold) 25%,transparent 25%,transparent 75%,var(--gold) 75%),
+    linear-gradient(45deg,var(--gold) 25%,transparent 25%,transparent 75%,var(--gold) 75%);
+  background-size:calc(var(--sq)*2) calc(var(--sq)*2);
+  background-position:0 0,var(--sq) var(--sq);
+}
+
+/* ===== NAV ===== */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(20px,5vw,60px);
+  transition:background .4s ease,padding .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+header.nav.scrolled{
+  background:rgba(10,10,11,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:10px clamp(20px,5vw,60px);
+}
+.nav-logo{height:34px;transition:height .4s ease}
+header.nav.scrolled .nav-logo{height:28px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{
+  font-family:'Barlow Semi Condensed',sans-serif;
+  font-weight:600;text-transform:uppercase;letter-spacing:.12em;
+  font-size:.82rem;color:var(--grey);transition:color .25s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  color:var(--black)!important;background:var(--gold);
+  padding:9px 18px;border-radius:2px;
+  transition:background .25s,transform .25s;
+}
+.nav-cta:hover{background:var(--gold-bright);transform:translateY(-1px)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--white);margin:5px 0;transition:.3s}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{
+  position:absolute;inset:0;opacity:0;
+  background-size:cover;background-position:center;
+  transition:opacity 1.4s ease,transform 7s ease;
+  transform:scale(1.08);
+}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(180deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,.25) 35%,rgba(10,10,11,.75) 78%,var(--black) 100%),
+    linear-gradient(90deg,rgba(10,10,11,.7) 0%,transparent 55%);
+}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero-logo{width:min(520px,80vw);margin-bottom:26px;filter:drop-shadow(0 8px 30px rgba(0,0,0,.6))}
+.hero h1{
+  font-size:clamp(2.4rem,6.2vw,5rem);text-transform:uppercase;
+  max-width:16ch;margin-bottom:22px;
+}
+.hero h1 em{font-style:normal;color:var(--gold-bright)}
+.hero p.lead{
+  font-size:clamp(1rem,1.5vw,1.22rem);color:var(--white);
+  max-width:46ch;margin-bottom:34px;font-weight:300;opacity:.9;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{
+  font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:.92rem;
+  padding:15px 30px;border-radius:2px;cursor:pointer;border:0;
+  display:inline-flex;align-items:center;gap:10px;transition:.25s;
+}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--gold-bright);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.hero-dots button{width:28px;height:3px;background:rgba(255,255,255,.28);border:0;cursor:pointer;transition:.3s;padding:0}
+.hero-dots button.active{background:var(--gold)}
+.hero-flag{position:absolute;top:0;left:0;right:0;height:6px;z-index:3}
+
+/* ===== SECTION SCAFFOLD ===== */
+section{position:relative;padding:clamp(70px,10vw,130px) 0}
+.sec-head{margin-bottom:56px;max-width:640px}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.4rem);text-transform:uppercase;margin:12px 0 16px}
+.sec-head p{color:var(--grey);font-size:1.05rem}
+.sec-flag{width:60px;height:14px;margin-bottom:4px}
+
+/* ===== SERVICES ===== */
+.services{background:linear-gradient(180deg,var(--black),var(--carbon) 40%,var(--black))}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--line)}
+.svc-card{
+  background:var(--carbon);padding:34px 30px;position:relative;
+  transition:background .3s;overflow:hidden;
+}
+.svc-card::before{
+  content:"";position:absolute;top:0;left:0;width:0;height:3px;
+  background:var(--gold);transition:width .4s ease;
+}
+.svc-card:hover{background:var(--carbon-2)}
+.svc-card:hover::before{width:100%}
+.svc-num{
+  font-family:'Saira Condensed',sans-serif;font-weight:800;
+  font-size:.85rem;color:var(--gold-deep);letter-spacing:.1em;margin-bottom:16px;
+}
+.svc-card h3{font-size:1.5rem;text-transform:uppercase;margin-bottom:12px;color:var(--white)}
+.svc-card p{color:var(--grey);font-size:.96rem;margin-bottom:18px}
+.svc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.svc-list li{
+  font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;
+  font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--grey-dim);border:1px solid var(--line);
+  padding:4px 10px;border-radius:2px;
+}
+.svc-star{position:absolute;top:22px;right:22px;font-size:.66rem;color:var(--gold);
+  font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  display:flex;align-items:center;gap:5px}
+.svc-star::before{content:"";width:6px;height:6px;background:var(--gold);border-radius:50%}
+
+/* ===== ABOUT ===== */
+.about{background:var(--black)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center}
+.about-copy h2{font-size:clamp(2rem,4.5vw,3.4rem);text-transform:uppercase;margin:12px 0 24px}
+.about-copy p{color:var(--grey);margin-bottom:18px;font-size:1.05rem}
+.about-copy strong{color:var(--white);font-weight:500}
+.about-stats{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap}
+.stat .n{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:2.6rem;color:var(--gold-bright);line-height:1}
+.stat .l{font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;color:var(--grey);margin-top:6px}
+.about-visual{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden}
+.about-visual img{width:100%;height:100%;object-fit:cover}
+.about-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,11,.6))}
+.about-tag{position:absolute;bottom:24px;left:24px;z-index:2}
+.about-tag .eyebrow{color:var(--gold-bright)}
+.about-tag .t{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:1.5rem;text-transform:uppercase}
+
+/* ===== VALUES ===== */
+.values{background:linear-gradient(180deg,var(--black),var(--carbon))}
+.val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px;margin-top:20px}
+.val{border-top:2px solid var(--steel);padding-top:22px;transition:border-color .3s}
+.val:hover{border-color:var(--gold)}
+.val .k{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.35rem;text-transform:uppercase;color:var(--white);margin-bottom:10px}
+.val p{color:var(--grey);font-size:.95rem}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--carbon);position:relative;overflow:hidden}
+.contact .checker-band{position:absolute;top:0;left:0;right:0;height:6px;opacity:.9}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.contact h2{font-size:clamp(2rem,4.5vw,3.4rem);text-transform:uppercase;margin:12px 0 20px}
+.contact-lead{color:var(--grey);font-size:1.08rem;margin-bottom:32px;max-width:42ch}
+.contact-cta{display:flex;flex-direction:column;gap:14px;max-width:360px}
+.info-list{display:grid;gap:2px;background:var(--line);border:1px solid var(--line)}
+.info-row{background:var(--carbon-2);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+.info-ico{width:34px;height:34px;flex:none;border:1px solid var(--gold-deep);border-radius:2px;display:grid;place-items:center;color:var(--gold-bright)}
+.info-ico svg{width:17px;height:17px}
+.info-row .lbl{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--grey-dim);margin-bottom:3px}
+.info-row .val2{font-size:1rem;color:var(--white)}
+.info-row a.val2:hover{color:var(--gold-bright)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--line)}
+.foot-grid{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.foot-logo{height:40px;opacity:.9}
+.foot-social{display:flex;gap:14px;align-items:center}
+.foot-social a{width:42px;height:42px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;color:var(--grey);transition:.25s}
+.foot-social a:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-2px)}
+.foot-social svg{width:19px;height:19px}
+.foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-bottom p{color:var(--grey-dim);font-size:.82rem}
+.foot-bottom a{color:var(--grey);font-size:.82rem}
+.foot-bottom a:hover{color:var(--gold-bright)}
+
+/* ===== FLOATING WHATSAPP ===== */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:200;
+  width:60px;height:60px;border-radius:50%;
+  background:#25d366;display:grid;place-items:center;
+  box-shadow:0 8px 30px rgba(0,0,0,.4);
+  transition:transform .25s,box-shadow .25s;
+  animation:wa-in .5s .8s both;
+}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 10px 40px rgba(37,211,102,.4)}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+.wa-float::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  border:2px solid #25d366;animation:wa-ping 2.2s ease-out infinite;
+}
+@keyframes wa-ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+@keyframes wa-in{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:860px){
+  .nav-links{
+    position:fixed;top:0;right:-100%;height:100vh;width:min(300px,80vw);
+    flex-direction:column;justify-content:center;gap:30px;
+    background:var(--carbon);padding:40px;transition:right .4s ease;
+    border-left:1px solid var(--line);
+  }
+  .nav-links.open{right:0}
+  .nav-toggle{display:block;z-index:101}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .about-visual{aspect-ratio:16/10;max-height:420px}
+  .contact-cta{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .hero-slide{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <img src="./images/logo_white.png" alt="Pitlane Detail" class="nav-logo">
+  <nav class="nav-links" id="navlinks">
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#valores">Por qué</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/5493515120123" class="nav-cta">Pedí tu turno</a>
+  </nav>
+  <button class="nav-toggle" id="navtoggle" aria-label="Menú"><span></span><span></span><span></span></button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="checker hero-flag"></div>
+  <div class="hero-slides" id="slides">
+    <div class="hero-slide" style="background-image:url('./images/pitlane_08.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('./images/pitlane_02.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('./images/pitlane_05.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('./images/pitlane_06.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('./images/pitlane_07.jpg')"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <img src="./images/logo_white.png" alt="Pitlane Detail · Estética Vehicular" class="hero-logo">
+      <h1>El detalle lo <em>cambia todo</em></h1>
+      <p class="lead">Estética vehicular en Córdoba Capital. Cuidamos tu auto como si fuera nuestro — con la dedicación que se merece un fierro.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5493515120123" class="btn btn-gold">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.66-.17 1.34"/></svg>
+          Escribinos por WhatsApp
+        </a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="dots"></div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="checker sec-flag"></div>
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2>Servicios</h2>
+      <p>Del lavado premium al tratamiento cerámico. Cada trabajo, con productos de máxima calidad y la dedicación que merece. Los precios se consultan según el vehículo y el estado.</p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc-card reveal">
+        <div class="svc-num">01</div>
+        <h3>Lavado</h3>
+        <p>El punto de partida. Lavado a mano, prolijo, con técnica y productos que cuidan la pintura.</p>
+        <ul class="svc-list">
+          <li>Lavado Premium</li><li>A domicilio</li><li>Lavado de motor</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <span class="svc-star">Estrella</span>
+        <div class="svc-num">02</div>
+        <h3>Limpieza de interior</h3>
+        <p>Dejamos el habitáculo como nuevo: tapizados, cuero, plásticos y hasta inundaciones.</p>
+        <ul class="svc-list">
+          <li>Asientos y panelería</li><li>Intermedia</li><li>Completa</li><li>Nutrido de cuero</li><li>Inundación</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <span class="svc-star">Estrella</span>
+        <div class="svc-num">03</div>
+        <h3>Tratamientos de protección</h3>
+        <p>Protección real y duradera para tu pintura. Tecnología de última para reducir tiempos de cuidado.</p>
+        <ul class="svc-list">
+          <li>Cerámico Nivel 1 y 2</li><li>Acrílico N1 y N2</li><li>Encerado</li><li>Vidrio líquido</li><li>3 in 1</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-num">04</div>
+        <h3>Corrección y pulido</h3>
+        <p>Eliminamos micro rayas, opacidad y remolinos. Devolvemos el brillo profundo de fábrica.</p>
+        <ul class="svc-list">
+          <li>Corrección de barniz N1 y N2</li><li>Pulido básico</li><li>Microbollos</li><li>Pulido de ópticas</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-num">05</div>
+        <h3>Estética exterior</h3>
+        <p>Los detalles que marcan la diferencia: llantas, ópticas, cromos y plásticos como el primer día.</p>
+        <ul class="svc-list">
+          <li>Pintura de llantas</li><li>Vinilo (stretch)</li><li>Restauración de ópticas</li><li>Renovación de plásticos y cromos</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-num">06</div>
+        <h3>Chapa y pintura</h3>
+        <p>Reparaciones y restauraciones con acabado profesional. Para clásicos, deportivos y de todos los días.</p>
+        <ul class="svc-list">
+          <li>Chapa y pintura</li><li>Restauraciones</li><li>Microbollos</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-num">07</div>
+        <h3>Polarizados</h3>
+        <p>Colocación prolija de láminas. Más privacidad, menos calor, mejor look.</p>
+        <ul class="svc-list">
+          <li>Polarizado de vidrios</li><li>Vinilo de ópticas</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-num">08</div>
+        <h3>Preparado para la venta</h3>
+        <p>¿Vendés tu auto? Lo dejamos impecable para que rinda al máximo: pre-lavado, pulido, ópticas e interior.</p>
+        <ul class="svc-list">
+          <li>Pack completo</li><li>Interior + exterior</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="about" id="nosotros">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <div class="checker sec-flag"></div>
+        <span class="eyebrow">Desde 2018</span>
+        <h2>Pasión por el fierro</h2>
+        <p>Pitlane nació en 2018 como lo que todavía es: <strong>gente que ama los autos</strong>. Empezó siendo un hobby de fin de semana entre amigos, con nuestros propios autos, hasta que decidimos ir más allá y ofrecerlo al público.</p>
+        <p>Creemos que el auto no es solo un medio de transporte — <strong>habla de vos</strong>. Por eso trabajamos con transparencia, dedicación y productos de primera. No estamos para hacerte una mejora el día que lo vendés: estamos para que lo disfrutes impecable, como el primer día.</p>
+        <p>No competimos por ser los más baratos. Competimos por el <strong>trato, la cercanía y la confianza</strong> — y por resultados que se ven.</p>
+        <div class="about-stats">
+          <div class="stat"><div class="n">2018</div><div class="l">Desde</div></div>
+          <div class="stat"><div class="n">+2.400</div><div class="l">Seguidores</div></div>
+          <div class="stat"><div class="n">100%</div><div class="l">A mano</div></div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <img src="./images/pitlane_04.jpg" alt="Detalle de trabajo Pitlane">
+        <div class="about-tag">
+          <span class="eyebrow">Córdoba Capital</span>
+          <div class="t">Local y a domicilio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="values" id="valores">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="checker sec-flag"></div>
+      <span class="eyebrow">Por qué elegirnos</span>
+      <h2>Nuestra forma de trabajar</h2>
+    </div>
+    <div class="val-grid">
+      <div class="val reveal"><div class="k">Calidad</div><p>Productos de máxima calidad, con respaldo y garantía. Sin atajos que bajen el resultado.</p></div>
+      <div class="val reveal"><div class="k">Cercanía</div><p>Te tratamos como a un amigo. Confianza y trato personalizado en cada trabajo.</p></div>
+      <div class="val reveal"><div class="k">Dedicación</div><p>Nos dedicamos a los detalles. Cada auto recibe el tiempo y el cuidado que merece.</p></div>
+      <div class="val reveal"><div class="k">Honestidad</div><p>Te decimos las cosas como son. Transparencia de principio a fin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="checker checker-band"></div>
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="checker sec-flag"></div>
+        <span class="eyebrow">Pedí tu turno</span>
+        <h2>Hablemos</h2>
+        <p class="contact-lead">Trabajamos únicamente con turnos, para dedicarle a tu auto el tiempo que necesita. Escribinos y coordinamos.</p>
+        <div class="contact-cta">
+          <a href="https://wa.me/5493515120123" class="btn btn-gold">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.66-.17 1.34"/></svg>
+            WhatsApp · 351 512 0123
+          </a>
+          <a href="https://instagram.com/pitlanedetail" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @pitlanedetail
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="info-list">
+          <div class="info-row">
+            <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div><div class="lbl">Dónde</div><div class="val2">Córdoba Capital · Atención en local y a domicilio</div></div>
+          </div>
+          <div class="info-row">
+            <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><div class="lbl">Turnos</div><div class="val2">Solo con turno previo · Coordinás por WhatsApp o Instagram</div></div>
+          </div>
+          <div class="info-row">
+            <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+            <div><div class="lbl">Medios de pago</div><div class="val2">Efectivo · Transferencia</div></div>
+          </div>
+          <div class="info-row">
+            <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <div><div class="lbl">Seguinos</div><div class="val2"><a href="https://instagram.com/pitlanedetail" class="val2">@pitlanedetail</a> · <a href="https://instagram.com/pitlane.usados" class="val2">@pitlane.usados</a></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <img src="./images/logo_white.png" alt="Pitlane Detail" class="foot-logo">
+      <div class="foot-social">
+        <a href="https://wa.me/5493515120123" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.66-.17 1.34"/></svg>
+        </a>
+        <a href="https://instagram.com/pitlanedetail" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year"></span> Pitlane Detail · Estética Vehicular · Córdoba Capital</p>
+      <a href="https://wa.me/5493515120123">Pedí tu turno →</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/5493515120123" class="wa-float" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.66-.17 1.34"/></svg>
+</a>
+
+<script>
+// nav scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+// mobile menu
+const toggle=document.getElementById('navtoggle'),links=document.getElementById('navlinks');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+// hero carousel
+const slides=[...document.querySelectorAll('.hero-slide')];
+const dotsWrap=document.getElementById('dots');
+let idx=0;
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  if(i===0)b.classList.add('active');
+  b.addEventListener('click',()=>go(i));
+  dotsWrap.appendChild(b);
+});
+const dots=[...dotsWrap.children];
+function go(n){
+  slides[idx].classList.remove('active');dots[idx].classList.remove('active');
+  idx=n;
+  slides[idx].classList.add('active');dots[idx].classList.add('active');
+}
+slides[0].classList.add('active');
+let timer=setInterval(()=>go((idx+1)%slides.length),5000);
+dotsWrap.addEventListener('click',()=>{clearInterval(timer);timer=setInterval(()=>go((idx+1)%slides.length),5000)});
+
+// reveal on scroll
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// year
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+PITLANE DETAIL — SITIO WEB
+===========================
+
+CONTENIDO DE ESTA CARPETA
+-------------------------
+- index.html      -> el sitio completo (HTML + CSS + JS, todo en un archivo)
+- images/         -> las 8 fotos del carrusel + el logo blanco
+- LEEME.txt       -> este archivo
+
+CÓMO SUBIRLO A BOLT
+-------------------
+1. Entrá a bolt.new e iniciá un proyecto en blanco (o "HTML/CSS/JS").
+2. Subí el archivo index.html a la raíz del proyecto.
+3. Subí la carpeta images/ completa (con las 8 fotos y el logo).
+   IMPORTANTE: la carpeta se tiene que llamar exactamente "images"
+   y estar al lado del index.html, porque el código usa rutas
+   como ./images/pitlane_01.jpg
+4. Abrí la vista previa. Listo, el sitio ya funciona.
+
+QUÉ FALTA / PRÓXIMOS PASOS
+--------------------------
+- Reemplazar las fotos del carrusel y de "Nosotros" cuando Franco
+  organice el material bueno. Solo hay que pisar los archivos en
+  images/ manteniendo los mismos nombres (pitlane_01.jpg ... _08.jpg).
+- Sumar descripciones definitivas de cada servicio (cuando llegue el PDF).
+- Conectar el dominio propio desde Bolt cuando esté listo para publicar.
+
+DATOS YA CARGADOS
+-----------------
+- WhatsApp: 351 512 0123 (link wa.me/5493515120123)
+- Instagram: @pitlanedetail y @pitlane.usados
+- Zona: Córdoba Capital, local y a domicilio
+- Turnos: solo con turno previo
+- Pago: efectivo / transferencia
+
+Para cambiar el número de WhatsApp: buscá "5493515120123" en index.html
+y reemplazalo en todos lados (aparece varias veces).

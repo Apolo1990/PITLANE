@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pitlane · estética vehicular | Córdoba Capital</title>
+<title>pitlane · estética vehicular | Detailing en Córdoba</title>
 <meta name="description" content="Estética vehicular en Córdoba Capital. Tratamiento cerámico, limpieza de interior, pulido, chapa y pintura, polarizados y más. Trabajamos con turnos. Atención en nuestro taller.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#151616">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
@@ -431,7 +436,10 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
   .topbar__base{animation:none}
 }
 </style>
-  <script type="module" crossorigin src="/assets/index-YAYM8sqa.js"></script>
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+  <script type="module" crossorigin src="/assets/index-BPev3RWE.js"></script>
 </head>
 <body>
 
@@ -460,8 +468,8 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-bg">
-    <img class="hero-bg--desktop" src="/hero-alfa-giulietta-16x9.webp" alt="Alfa Romeo Giulietta estética vehicular Pitlane">
-    <img class="hero-bg--mobile" src="/hero-alfa-giulia-mobile.webp" alt="Alfa Romeo Giulia estética vehicular Pitlane">
+    <img class="hero-bg--desktop" src="/images/hero-alfa-giulietta-16x9.webp" alt="Alfa Romeo Giulietta estética vehicular Pitlane">
+    <img class="hero-bg--mobile" src="/images/hero-alfa-giulia-mobile.webp" alt="Alfa Romeo Giulia estética vehicular Pitlane">
   </div>
   <div class="hero-inner">
     <div class="wrap">
@@ -513,7 +521,7 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
         </div>
       </div>
       <div class="about-visual reveal hover-img">
-        <img src="/galeria-mustang-frente.webp" alt="Mustang en proceso de estética vehicular Pitlane">
+        <img src="/images/galeria-mustang-frente.webp" alt="Mustang en proceso de estética vehicular Pitlane">
         <div class="about-tag">
           <span class="eyebrow">Córdoba Capital</span>
           <div class="t">Taller propio</div>
@@ -800,15 +808,15 @@ function baRender(){
   group.items.forEach((slug,i)=>{
     const t=document.createElement('div');
     t.className='ba-thumb'+(i===baItem?' active':'');
-    t.style.backgroundImage='url(/'+slug+'-antes.webp)';
+    t.style.backgroundImage='url(/images/'+slug+'-antes.webp)';
     t.addEventListener('click',()=>{baItem=i;baRender();baLoad()});
     baThumbs.appendChild(t);
   });
 }
 function baLoad(){
   const slug=baGroups[baGroup].items[baItem];
-  baBefore.src='/'+slug+'-antes.webp';
-  baAfter.src='/'+slug+'-despues.webp';
+  baBefore.src='/images/'+slug+'-antes.webp';
+  baAfter.src='/images/'+slug+'-despues.webp';
 }
 baGroups.forEach((g,i)=>{
   const b=document.createElement('button');

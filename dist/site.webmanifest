@@ -1,0 +1,16 @@
+{
+  "name": "pitlane · estética vehicular",
+  "short_name": "pitlane",
+  "description": "Estética vehicular en Córdoba Capital",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#151616",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "/favicon.ico", "type": "image/x-icon", "sizes": "48x48" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

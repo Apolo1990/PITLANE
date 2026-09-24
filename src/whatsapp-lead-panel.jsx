@@ -110,10 +110,27 @@ function WhatsAppLeadPanel() {
     return lines.join('\n');
   };
 
-  const waLink = `${WA_BASE}?text=${encodeURIComponent(buildMessage())}`;
-  const waSimpleLink = `${WA_BASE}?text=${encodeURIComponent('¡Hola Pitlane! Quiero hacer una consulta.')}`;
   const canSubmit = selectedServices.size > 0;
   const isMobile = window.matchMedia('(max-width: 639px)').matches;
+
+  const openWhatsApp = (mensaje) => {
+    const url = `${WA_BASE}?text=${encodeURIComponent(mensaje)}`;
+    const win = window.open(url, '_blank', 'noopener');
+    if (!win) window.location.href = url;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+    openWhatsApp(buildMessage());
+    closePanel();
+  };
+
+  const handleSkip = (e) => {
+    e.preventDefault();
+    openWhatsApp('¡Hola Pitlane! Quiero hacer una consulta.');
+    closePanel();
+  };
 
   const panelContent = (
     <div className="wa-panel">
@@ -169,18 +186,14 @@ function WhatsAppLeadPanel() {
       </div>
 
       <a
-        href={canSubmit ? waLink : '#'}
-        target={canSubmit ? '_blank' : undefined}
-        rel={canSubmit ? 'noopener noreferrer' : undefined}
+        href="#"
         className={`wa-panel__submit${canSubmit ? '' : ' wa-panel__submit--disabled'}`}
-        onClick={(e) => { if (!canSubmit) e.preventDefault(); else closePanel(); }}
+        onClick={handleSubmit}
       >Enviar por WhatsApp</a>
       <a
-        href={waSimpleLink}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#"
         className="wa-panel__skip"
-        onClick={() => closePanel()}
+        onClick={handleSkip}
       >Escribir sin completar</a>
     </div>
   );

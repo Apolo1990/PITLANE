@@ -6,6 +6,39 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const spring = { type: 'spring', stiffness: 260, damping: 30 };
 const fadeOnly = { duration: 0.3 };
 
+// ===== useReveal hook =====
+function useReveal() {
+  useEffect(() => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    const observeAll = () => {
+      document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+    };
+
+    observeAll();
+
+    const mo = new MutationObserver(() => observeAll());
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+    };
+  }, []);
+}
+
+function RevealObserver() {
+  useReveal();
+  return null;
+}
+
 // ===== DashedDivider =====
 export function DashedDivider() {
   return <div className="separator" aria-hidden="true" />;
@@ -125,47 +158,28 @@ function SharedLightbox({ images, alts, selected, setSelected, prefix }) {
 // ===== Gallery =====
 function Gallery() {
   const [selected, setSelected] = useState(null);
-  const [visibleIdxs, setVisibleIdxs] = useState(new Set());
-  const gridRef = useRef(null);
-
   const images = galeria.map(g => `/${g.slug}.webp`);
   const alts = galeria.map(g => g.alt);
 
-  useEffect(() => {
-    if (!gridRef.current) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          setVisibleIdxs(prev => new Set(prev).add(Number(e.target.dataset.idx)));
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: '200px' });
-    gridRef.current.querySelectorAll('[data-idx]').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
   return (
     <>
-      <div className="gal-grid" ref={gridRef}>
+      <div className="gal-grid">
         {galeria.map((g, i) => (
           <div
             key={g.slug}
             className="gal-item hover-img"
-            data-idx={i}
             onClick={() => setSelected(i)}
           >
-            {visibleIdxs.has(i) && (
-              <motion.img
-                layoutId={prefersReducedMotion ? undefined : `gal-${i}`}
-                src={`/${g.slug}.webp`}
-                alt={g.alt}
-                className="gal-img"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={fadeOnly}
-              />
-            )}
+            <motion.img
+              layoutId={prefersReducedMotion ? undefined : `gal-${i}`}
+              loading="lazy"
+              src={`/${g.slug}.webp`}
+              alt={g.alt}
+              className="gal-img"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={fadeOnly}
+            />
           </div>
         ))}
       </div>
@@ -224,3 +238,8 @@ const procRoot = document.getElementById('procRoot');
 if (procRoot) createRoot(procRoot).render(<Process />);
 
 mountDashedDividers();
+
+// ===== Mount RevealObserver =====
+const revealRoot = document.createElement('div');
+document.body.appendChild(revealRoot);
+createRoot(revealRoot).render(<RevealObserver />);

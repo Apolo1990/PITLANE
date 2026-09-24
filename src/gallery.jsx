@@ -186,7 +186,7 @@ function Process() {
         {proceso.map((p, i) => (
           <div
             key={p.slug}
-            className="proc-card reveal hover-img"
+            className="proc-card hover-img"
             onClick={() => setSelected(i)}
           >
             <motion.img

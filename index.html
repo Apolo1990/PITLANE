@@ -277,8 +277,10 @@ section{position:relative;padding:clamp(70px,10vw,130px) 0}
 
 /* ===== PROCESS ===== */
 .process{background:linear-gradient(180deg,var(--black),var(--carbon))}
-.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line)}
-.proc-card{background:var(--carbon);position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.proc-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:1px;background:var(--line)}
+@media(min-width:600px){.proc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.proc-grid{grid-template-columns:repeat(4,1fr)}}
+.proc-card{background:var(--carbon);position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer}
 .proc-card img{width:100%;height:100%;object-fit:cover}
 .proc-card.hover-img{transition:transform .3s ease,box-shadow .3s ease}
 .proc-card.hover-img:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.45);z-index:2}

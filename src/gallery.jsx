@@ -128,7 +128,7 @@ function Gallery() {
   const [visibleIdxs, setVisibleIdxs] = useState(new Set());
   const gridRef = useRef(null);
 
-  const images = galeria.map(g => `/images/${g.slug}.webp`);
+  const images = galeria.map(g => `/${g.slug}.webp`);
   const alts = galeria.map(g => g.alt);
 
   useEffect(() => {
@@ -158,7 +158,7 @@ function Gallery() {
             {visibleIdxs.has(i) && (
               <motion.img
                 layoutId={prefersReducedMotion ? undefined : `gal-${i}`}
-                src={`/images/${g.slug}.webp`}
+                src={`/${g.slug}.webp`}
                 alt={g.alt}
                 className="gal-img"
                 initial={{ opacity: 0 }}
@@ -177,7 +177,7 @@ function Gallery() {
 // ===== Process =====
 function Process() {
   const [selected, setSelected] = useState(null);
-  const images = proceso.map(p => `/images/${p.slug}.webp`);
+  const images = proceso.map(p => `/${p.slug}.webp`);
   const alts = proceso.map(p => `${p.t} - proceso de estética vehicular Pitlane`);
 
   return (
@@ -192,7 +192,7 @@ function Process() {
             <motion.img
               layoutId={prefersReducedMotion ? undefined : `proc-${i}`}
               loading="lazy"
-              src={`/images/${p.slug}.webp`}
+              src={`/${p.slug}.webp`}
               alt={alts[i]}
             />
             <div className="proc-label">

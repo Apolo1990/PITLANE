@@ -467,8 +467,8 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-bg">
-    <img class="hero-bg--desktop" src="/images/hero-alfa-giulietta-16x9.webp" alt="Alfa Romeo Giulietta estética vehicular Pitlane">
-    <img class="hero-bg--mobile" src="/images/hero-alfa-giulia-mobile.webp" alt="Alfa Romeo Giulia estética vehicular Pitlane">
+    <img class="hero-bg--desktop" src="/hero-alfa-giulietta-16x9.webp" alt="Alfa Romeo Giulietta estética vehicular Pitlane">
+    <img class="hero-bg--mobile" src="/hero-alfa-giulia-mobile.webp" alt="Alfa Romeo Giulia estética vehicular Pitlane">
   </div>
   <div class="hero-inner">
     <div class="wrap">
@@ -520,7 +520,7 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
         </div>
       </div>
       <div class="about-visual reveal hover-img">
-        <img src="/images/galeria-mustang-frente.webp" alt="Mustang en proceso de estética vehicular Pitlane">
+        <img src="/galeria-mustang-detalle.webp" alt="Mustang en proceso de estética vehicular Pitlane">
         <div class="about-tag">
           <span class="eyebrow">Córdoba Capital</span>
           <div class="t">Taller propio</div>
@@ -807,15 +807,15 @@ function baRender(){
   group.items.forEach((slug,i)=>{
     const t=document.createElement('div');
     t.className='ba-thumb'+(i===baItem?' active':'');
-    t.style.backgroundImage='url(/images/'+slug+'-antes.webp)';
+    t.style.backgroundImage='url(/'+slug+'-antes.webp)';
     t.addEventListener('click',()=>{baItem=i;baRender();baLoad()});
     baThumbs.appendChild(t);
   });
 }
 function baLoad(){
   const slug=baGroups[baGroup].items[baItem];
-  baBefore.src='/images/'+slug+'-antes.webp';
-  baAfter.src='/images/'+slug+'-despues.webp';
+  baBefore.src='/'+slug+'-antes.webp';
+  baAfter.src='/'+slug+'-despues.webp';
 }
 baGroups.forEach((g,i)=>{
   const b=document.createElement('button');

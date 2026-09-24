@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pitlane · estética vehicular | Córdoba Capital</title>
-<meta name="description" content="Estética vehicular en Córdoba Capital. Tratamiento cerámico, limpieza de interior, pulido, chapa y pintura, polarizados y más. Trabajamos con turnos. Atención en local y a domicilio.">
+<meta name="description" content="Estética vehicular en Córdoba Capital. Tratamiento cerámico, limpieza de interior, pulido, chapa y pintura, polarizados y más. Trabajamos con turnos. Atención en nuestro taller.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
@@ -41,7 +41,8 @@ h1,h2,h3,.display{font-family:'Saira Condensed',sans-serif;font-weight:700;line-
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+@media(min-width:768px){.wrap{padding:0 40px}}
 
 /* ===== checkered flag motif ===== */
 .checker{
@@ -77,16 +78,23 @@ header.nav{
 }
 header.nav .header-inner{
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px clamp(20px,5vw,60px);
-  transition:background .4s ease,padding .4s ease,border-color .4s ease;
+  max-width:1240px;margin:0 auto;width:100%;
+  padding:14px 24px;
+  transition:padding .4s ease;
+}
+@media(min-width:768px){header.nav .header-inner{padding:14px 40px}}
+header.nav .nav-bg{
+  position:absolute;inset:0;z-index:-1;
+  transition:background .4s ease,border-color .4s ease;
   border-bottom:1px solid transparent;
 }
-header.nav.scrolled .header-inner{
+header.nav.scrolled .nav-bg{
   background:rgba(10,10,11,.85);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
-  padding:10px clamp(20px,5vw,60px);
 }
+header.nav.scrolled .header-inner{padding:10px 24px}
+@media(min-width:768px){header.nav.scrolled .header-inner{padding:10px 40px}}
 .logo svg{height:26px;width:auto;display:block;color:#fff;transition:color .25s,height .4s ease}
 .logo:hover svg{color:var(--gold-bright)}
 header.nav.scrolled .logo svg{height:24px}
@@ -108,14 +116,10 @@ header.nav.scrolled .logo svg{height:24px}
 
 /* ===== HERO ===== */
 .hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center}
-.hero-slides{position:absolute;inset:0}
-.hero-slide{
-  position:absolute;inset:0;opacity:0;
-  background-size:cover;background-position:center;
-  transition:opacity 1.4s ease,transform 7s ease;
-  transform:scale(1.08);
-}
-.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg .hero-bg--mobile{display:none}
+@media(max-width:768px){.hero-bg .hero-bg--desktop{display:none}.hero-bg .hero-bg--mobile{display:block}}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:1;
   background:
@@ -143,9 +147,6 @@ header.nav.scrolled .logo svg{height:24px}
 .btn-gold:hover{background:var(--gold-bright);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
-.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
-.hero-dots button{width:28px;height:3px;background:rgba(255,255,255,.28);border:0;cursor:pointer;transition:.3s;padding:0}
-.hero-dots button.active{background:var(--gold)}
 /* ===== SECTION SCAFFOLD ===== */
 section{position:relative;padding:clamp(70px,10vw,130px) 0}
 .sec-head{margin-bottom:56px;max-width:640px}
@@ -194,10 +195,17 @@ section{position:relative;padding:clamp(70px,10vw,130px) 0}
 .svc__chip{color:#c9c9ce;font-size:9px;letter-spacing:.09em;text-transform:uppercase;border:1px solid #35353b;padding:4px 7px;white-space:nowrap}
 .svc__chip--star{display:inline-flex;align-items:center;gap:5px;color:#e8bb52;border-color:#5e4a1d;background:rgba(212,164,55,.07);padding:3px 8px 3px 6px}
 .svc__chip--star svg{width:13px;height:13px;flex:none}
+.svc__consult{display:inline-block;margin-top:12px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--gold-bright);background:transparent;border:1px solid var(--gold-deep);border-radius:2px;padding:7px 16px;cursor:pointer;transition:background .25s,color .25s}
+.svc__consult:hover{background:var(--gold);color:var(--black)}
 
 @media(prefers-reduced-motion:reduce){
   .svc,.svc__ic,.svc__medal,.svc__panel,.svc__desc,.svc__chips{transition-duration:.01s!important;transition-delay:0s!important}
 }
+
+/* ===== UNIFIED HOVER ===== */
+.hover-img{transition:transform .3s ease,box-shadow .3s ease}
+.hover-img:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.45)}
+@media(prefers-reduced-motion:reduce){.hover-img{transition:none!important}.hover-img:hover{transform:none;box-shadow:none}}
 
 /* ===== ABOUT ===== */
 .about{background:var(--black)}
@@ -210,18 +218,152 @@ section{position:relative;padding:clamp(70px,10vw,130px) 0}
 .stat .l{font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;color:var(--grey);margin-top:6px}
 .about-visual{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden}
 .about-visual img{width:100%;height:100%;object-fit:cover}
+.about-visual.hover-img{cursor:default}
 .about-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,11,.6))}
 .about-tag{position:absolute;bottom:24px;left:24px;z-index:2}
 .about-tag .eyebrow{color:var(--gold-bright)}
 .about-tag .t{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:1.5rem;text-transform:uppercase}
 
+/* ===== BEFORE/AFTER ===== */
+.ba{background:var(--carbon)}
+.ba-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.ba-tab{
+  font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;
+  color:var(--grey);background:transparent;border:1px solid var(--line);
+  padding:9px 16px;cursor:pointer;transition:color .25s,border-color .25s,background .25s;
+}
+.ba-tab:hover{color:var(--white);border-color:var(--steel)}
+.ba-tab.active{color:var(--black);background:var(--gold);border-color:var(--gold)}
+.ba-thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.ba-thumb{
+  width:74px;height:74px;border:2px solid var(--line);cursor:pointer;
+  background-size:cover;background-position:center;transition:border-color .25s;
+}
+.ba-thumb:hover{border-color:var(--steel)}
+.ba-thumb.active{border-color:var(--gold)}
+.ba-stage{
+  position:relative;aspect-ratio:16/10;max-width:900px;margin:0 auto;
+  border-radius:3px;overflow:hidden;user-select:none;touch-action:pan-y;
+}
+.ba-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-stage .ba-after{clip-path:inset(0 0 0 50%)}
+.ba-handle{
+  position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);
+  transform:translateX(-50%);cursor:ew-resize;z-index:5;
+}
+.ba-handle::after{
+  content:"";position:absolute;top:50%;left:50%;width:38px;height:38px;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:var(--gold);border:3px solid var(--black);
+}
+.ba-handle::before{
+  content:"◀ ▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:11px;color:var(--black);z-index:1;font-weight:700;letter-spacing:1px;
+}
+.ba-label{
+  position:absolute;top:12px;z-index:4;
+  font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.15em;font-size:.68rem;
+  padding:4px 10px;background:rgba(10,10,11,.7);color:var(--white);border-radius:2px;
+}
+.ba-label--before{left:12px}
+.ba-label--after{right:12px;color:var(--gold-bright)}
+
+/* ===== PROCESS ===== */
+.process{background:linear-gradient(180deg,var(--black),var(--carbon))}
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line)}
+.proc-card{background:var(--carbon);position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.proc-card img{width:100%;height:100%;object-fit:cover}
+.proc-card.hover-img{transition:transform .3s ease,box-shadow .3s ease}
+.proc-card.hover-img:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.45);z-index:2}
+@media(prefers-reduced-motion:reduce){.proc-card.hover-img:hover{transform:none;box-shadow:none}}
+.proc-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,11,.85))}
+.proc-card .proc-label{position:absolute;bottom:18px;left:18px;z-index:2}
+.proc-card .proc-label .eyebrow{color:var(--gold-bright)}
+.proc-card .proc-label .t{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;color:var(--white)}
+
+/* ===== GALLERY ===== */
+.gallery{background:var(--carbon)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:1023px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:639px){.gal-grid{grid-template-columns:1fr}}
+.gal-item{aspect-ratio:4/5;overflow:hidden;cursor:pointer;position:relative}
+.gal-item .gal-img{width:100%;height:100%;object-fit:cover}
+.gal-item.hover-img{transition:transform .3s ease,box-shadow .3s ease}
+.gal-item.hover-img:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.45)}
+@media(prefers-reduced-motion:reduce){.gal-item.hover-img:hover{transform:none;box-shadow:none}}
+
+/* ===== LIGHTBOX (framer-motion) ===== */
+.lb-overlay{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lb-expanded{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close,.lb-prev,.lb-next,.lb-count{position:absolute;z-index:5;color:var(--white);font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;cursor:pointer;user-select:none}
+.lb-close{top:20px;right:24px;font-size:2rem;line-height:1;opacity:.7;transition:opacity .2s}
+.lb-close:hover{opacity:1}
+.lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:2.4rem;padding:16px;opacity:.6;transition:opacity .2s}
+.lb-prev{left:16px}
+.lb-next{right:16px}
+.lb-prev:hover,.lb-next:hover{opacity:1}
+.lb-count{bottom:24px;left:50%;transform:translateX(-50%);color:var(--grey);letter-spacing:.15em;font-size:.78rem;text-transform:uppercase;cursor:default}
+
+/* ===== WHATSAPP LEAD PANEL ===== */
+.wa-overlay{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.wa-modal{max-width:480px;width:100%;background:var(--carbon,#161618);border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;max-height:90vh;overflow-y:auto}
+.wa-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--carbon,#161618);border-radius:12px 12px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.5);max-height:90vh;overflow-y:auto;touch-action:none}
+.wa-panel{padding:32px 28px 28px}
+.wa-panel__handle{width:40px;height:4px;border-radius:2px;background:var(--steel,#3a3a3a);margin:0 auto 20px;cursor:grab;touch-action:none}
+.wa-panel__close{position:absolute;top:16px;right:18px;background:none;border:0;color:var(--white,#fff);font-size:1.6rem;cursor:pointer;line-height:1;opacity:.6;transition:opacity .2s;z-index:2}
+.wa-panel__close:hover{opacity:1}
+.wa-panel__title{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.4rem;text-transform:uppercase;color:var(--white,#fff);margin-bottom:24px}
+.wa-panel__field{margin-bottom:20px}
+.wa-panel__label{display:block;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--grey,#9a9a9f);margin-bottom:10px}
+.wa-panel__chips{display:flex;flex-wrap:wrap;gap:8px}
+.wa-chip{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:.82rem;color:#b0b0b5;background:var(--black,#0a0a0b);border:1px solid #3a3a3a;border-radius:2px;padding:8px 14px;cursor:pointer;transition:color .2s,border-color .2s}
+.wa-chip:hover{border-color:#4a4a4e;color:var(--white,#fff)}
+.wa-chip--active{color:var(--gold-bright,#e8bb52);border-color:var(--gold,#d4a437);background:var(--black,#0a0a0b)}
+.wa-chip__icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none}
+.wa-chip__circle{width:16px;height:16px;border-radius:50%;border:1.5px solid #3a3a3a;box-sizing:border-box;transition:border-color .2s}
+.wa-chip--active .wa-chip__circle{border-color:var(--gold,#d4a437)}
+.wa-chip__wheel{display:inline-flex;color:var(--gold-bright,#e8bb52)}
+.wa-panel__input{width:100%;background:var(--black,#0a0a0b);border:1px solid var(--line,#2a2a2e);border-radius:2px;padding:12px 14px;color:var(--white,#fff);font-size:.92rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box}
+.wa-panel__input:focus{border-color:var(--gold,#d4a437)}
+.wa-panel__input::placeholder{color:var(--grey-dim,#6a6a6f)}
+.wa-panel__submit{display:flex;align-items:center;justify-content:center;width:100%;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.92rem;padding:14px;border-radius:2px;background:var(--gold,#d4a437);color:var(--black,#0a0a0b);border:0;cursor:pointer;transition:background .25s,transform .25s;margin-top:4px;text-decoration:none}
+.wa-panel__submit:hover{background:var(--gold-bright,#e8bb52);transform:translateY(-2px)}
+.wa-panel__submit--disabled{background:var(--line,#2a2a2e);color:var(--grey-dim,#6a6a6f);cursor:not-allowed;pointer-events:none}
+.wa-panel__skip{display:block;text-align:center;margin-top:14px;font-size:.82rem;color:var(--grey,#9a9a9f);text-decoration:none;transition:color .2s}
+.wa-panel__skip:hover{color:var(--gold-bright,#e8bb52)}
+@media(max-width:639px){.wa-modal{display:none}}
+@media(min-width:640px){.wa-sheet{display:none}}
+
+/* ===== SEPARATOR ===== */
+.separator{height:2px;width:100%;
+  background:repeating-linear-gradient(90deg,
+    var(--gold) 0,var(--gold) 12px,
+    transparent 12px,transparent 24px);
+  -webkit-mask-image:linear-gradient(to right,transparent,black);
+  mask-image:linear-gradient(to right,transparent,black);
+  background-size:24px 2px;
+  animation:sep-slide 2s linear infinite;
+  opacity:.5;
+}
+@keyframes sep-slide{to{background-position:24px 0}}
+@media(prefers-reduced-motion:reduce){.separator{animation:none}}
+
 /* ===== VALUES ===== */
 .values{background:linear-gradient(180deg,var(--black),var(--carbon))}
 .val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px;margin-top:20px}
-.val{border-top:2px solid var(--steel);padding-top:22px;transition:border-color .3s}
-.val:hover{border-color:var(--gold)}
+.val{padding-top:22px;position:relative}
+.val::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--steel)}
+.val::after{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width .6s ease}
+.val.val-fill::after{width:100%}
+.val:nth-child(1).val-fill::after{transition-delay:0ms}
+.val:nth-child(2).val-fill::after{transition-delay:150ms}
+.val:nth-child(3).val-fill::after{transition-delay:300ms}
+.val:nth-child(4).val-fill::after{transition-delay:450ms}
 .val .k{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.35rem;text-transform:uppercase;color:var(--white);margin-bottom:10px}
 .val p{color:var(--grey);font-size:.95rem}
+@media(prefers-reduced-motion:reduce){.val::after{transition:none!important}.val.val-fill::after{width:100%}}
 
 /* ===== CONTACT ===== */
 .contact{background:var(--carbon);position:relative;overflow:hidden}
@@ -242,14 +384,10 @@ section{position:relative;padding:clamp(70px,10vw,130px) 0}
 footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--line)}
 .foot-grid{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
 .foot-logo{height:40px;opacity:.9;color:#fff}
-.foot-social{display:flex;gap:14px;align-items:center}
-.foot-social a{width:42px;height:42px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;color:var(--grey);transition:.25s}
-.foot-social a:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-2px)}
-.foot-social svg{width:19px;height:19px}
-.foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .foot-bottom p{color:var(--grey-dim);font-size:.82rem}
-.foot-bottom a{color:var(--grey);font-size:.82rem}
-.foot-bottom a:hover{color:var(--gold-bright)}
+.foot-cta{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;padding:10px 22px;border-radius:2px;background:var(--gold);color:var(--black)!important;transition:background .25s,transform .25s}
+.foot-cta:hover{background:var(--gold-bright);transform:translateY(-2px)}
 
 /* ===== FLOATING WHATSAPP ===== */
 .wa-float{
@@ -305,6 +443,7 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
     <span class="topbar__fill"></span>
   </div>
   <div class="header-inner">
+    <div class="nav-bg"></div>
     <a class="logo" href="/" aria-label="pitlane estética vehicular"><svg role="img" aria-label="pitlane estética vehicular"><use href="#pitlane-logo"/></svg></a>
     <nav class="nav-links" id="navlinks">
       <a href="#servicios">Servicios</a>
@@ -319,12 +458,9 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-slides" id="slides">
-    <div class="hero-slide" style="background-image:url('./images/pitlane_08.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('./images/pitlane_02.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('./images/pitlane_05.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('./images/pitlane_06.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('./images/pitlane_07.jpg')"></div>
+  <div class="hero-bg">
+    <img class="hero-bg--desktop" src="/hero-alfa-giulietta-16x9.webp" alt="Alfa Romeo Giulietta estética vehicular Pitlane">
+    <img class="hero-bg--mobile" src="/hero-alfa-giulia-mobile.webp" alt="Alfa Romeo Giulia estética vehicular Pitlane">
   </div>
   <div class="hero-inner">
     <div class="wrap">
@@ -339,8 +475,9 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
       </div>
     </div>
   </div>
-  <div class="hero-dots" id="dots"></div>
 </section>
+
+<div class="separator"></div>
 
 <!-- SERVICIOS -->
 <section class="services" id="servicios">
@@ -354,6 +491,8 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
     <div class="svc-grid" id="svcgrid"></div>
   </div>
 </section>
+
+<div class="separator"></div>
 
 <!-- NOSOTROS -->
 <section class="about" id="nosotros">
@@ -372,14 +511,67 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
           <div class="stat"><div class="n">100%</div><div class="l">A mano</div></div>
         </div>
       </div>
-      <div class="about-visual reveal">
-        <img src="./images/pitlane_04.jpg" alt="Detalle de trabajo Pitlane">
+      <div class="about-visual reveal hover-img">
+        <img src="/galeria-mustang-frente.webp" alt="Mustang en proceso de estética vehicular Pitlane">
         <div class="about-tag">
           <span class="eyebrow">Córdoba Capital</span>
-          <div class="t">Local y a domicilio</div>
+          <div class="t">Taller propio</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- ANTES Y DESPUÉS -->
+<section class="ba" id="antes-despues">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="checker sec-flag"></div>
+      <span class="eyebrow">Resultados reales</span>
+      <h2>Antes y después</h2>
+      <p>Arrastrá el comparador y mirá la diferencia. Cada caso es un trabajo real, sin retoque.</p>
+    </div>
+    <div class="ba-tabs" id="baTabs"></div>
+    <div class="ba-thumbs" id="baThumbs"></div>
+    <div class="ba-stage" id="baStage">
+      <img class="ba-before" id="baBefore" alt="Antes del trabajo de estética vehicular">
+      <img class="ba-after" id="baAfter" alt="Después del trabajo de estética vehicular">
+      <span class="ba-label ba-label--before">Antes</span>
+      <span class="ba-label ba-label--after">Después</span>
+      <div class="ba-handle" id="baHandle"></div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- CÓMO TRABAJAMOS -->
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="checker sec-flag"></div>
+      <span class="eyebrow">Nuestro proceso</span>
+      <h2>Cómo trabajamos</h2>
+      <p>Cada paso, con dedicación y productos de primera. Así logramos resultados que se ven.</p>
+    </div>
+    <div id="procRoot"></div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- GALERÍA -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="checker sec-flag"></div>
+      <span class="eyebrow">Nuestros trabajos</span>
+      <h2>Galería</h2>
+      <p>Una selección de los fierros que pasaron por nuestras manos.</p>
+    </div>
+    <div id="galRoot"></div>
   </div>
 </section>
 
@@ -400,6 +592,8 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
   </div>
 </section>
 
+<div class="separator"></div>
+
 <!-- CONTACTO -->
 <section class="contact" id="contacto">
   <div class="checker checker-band"></div>
@@ -409,7 +603,7 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
         <div class="checker sec-flag"></div>
         <span class="eyebrow">Pedí tu turno</span>
         <h2>Hablemos</h2>
-        <p class="contact-lead">Trabajamos únicamente con turnos, para dedicarle a tu auto el tiempo que necesita. Escribinos y coordinamos.</p>
+        <p class="contact-lead">Coordinamos día y horario para que tu auto tenga todo el tiempo que se merece. Escribinos y armamos tu turno.</p>
         <div class="contact-cta">
           <a href="https://wa.me/5493515120123" class="btn btn-gold">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.66-.17 1.34"/></svg>
@@ -425,11 +619,11 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
         <div class="info-list">
           <div class="info-row">
             <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-            <div><div class="lbl">Dónde</div><div class="val2">Córdoba Capital · Atención en local y a domicilio</div></div>
+            <div><div class="lbl">Dónde</div><div class="val2">Córdoba Capital · Atención en nuestro taller</div></div>
           </div>
           <div class="info-row">
             <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div><div class="lbl">Turnos</div><div class="val2">Solo con turno previo · Coordinás por WhatsApp o Instagram</div></div>
+            <div><div class="lbl">Cómo reservar</div><div class="val2">Elegís día y horario por WhatsApp o Instagram</div></div>
           </div>
           <div class="info-row">
             <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
@@ -450,18 +644,10 @@ footer{background:var(--black);padding:60px 0 34px;border-top:1px solid var(--li
   <div class="wrap">
     <div class="foot-grid">
       <svg class="foot-logo" role="img" aria-label="pitlane estética vehicular"><use href="#pitlane-logo"/></svg>
-      <div class="foot-social">
-        <a href="https://wa.me/5493515120123" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.66-.17 1.34"/></svg>
-        </a>
-        <a href="https://instagram.com/pitlanedetail" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        </a>
-      </div>
     </div>
     <div class="foot-bottom">
       <p>© <span id="year"></span> pitlane · estética vehicular · Córdoba Capital</p>
-      <a href="https://wa.me/5493515120123">Pedí tu turno →</a>
+      <a href="https://wa.me/5493515120123" class="foot-cta">Pedí tu turno</a>
     </div>
   </div>
 </footer>
@@ -495,26 +681,6 @@ const toggle=document.getElementById('navtoggle'),links=document.getElementById(
 toggle.addEventListener('click',()=>links.classList.toggle('open'));
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
 
-// hero carousel
-const slides=[...document.querySelectorAll('.hero-slide')];
-const dotsWrap=document.getElementById('dots');
-let idx=0;
-slides.forEach((_,i)=>{
-  const b=document.createElement('button');
-  if(i===0)b.classList.add('active');
-  b.addEventListener('click',()=>go(i));
-  dotsWrap.appendChild(b);
-});
-const dots=[...dotsWrap.children];
-function go(n){
-  slides[idx].classList.remove('active');dots[idx].classList.remove('active');
-  idx=n;
-  slides[idx].classList.add('active');dots[idx].classList.add('active');
-}
-slides[0].classList.add('active');
-let timer=setInterval(()=>go((idx+1)%slides.length),5000);
-dotsWrap.addEventListener('click',()=>{clearInterval(timer);timer=setInterval(()=>go((idx+1)%slides.length),5000)});
-
 // reveal on scroll
 const io=new IntersectionObserver((es)=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
@@ -523,7 +689,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 // ===== SERVICES GRID =====
 const servicios=[
-  {id:'lavado',titulo:'Lavado',destacado:false,descripcion:'El punto de partida. Lavado a mano, prolijo, con técnica y productos que cuidan la pintura.',variantes:['Lavado premium','A domicilio','Lavado de motor']},
+  {id:'lavado',titulo:'Lavado',destacado:false,descripcion:'El punto de partida. Lavado a mano, prolijo, con técnica y productos que cuidan la pintura.',variantes:['Lavado premium','Lavado de motor']},
   {id:'interior',titulo:'Limpieza de interior',destacado:true,descripcion:'Dejamos el habitáculo como nuevo: tapizados, cuero, plásticos y hasta inundaciones.',variantes:['Asientos y panelería','Intermedia','Completa','Nutrido de cuero','Inundación']},
   {id:'exterior',titulo:'Estética exterior',destacado:false,descripcion:'Los detalles que marcan la diferencia: llantas, ópticas, cromos y plásticos como el primer día.',variantes:['Pintura de llantas','Vinilo (stretch)','Restauración de ópticas','Plásticos y cromos']},
   {id:'pulido',titulo:'Corrección y pulido',destacado:false,descripcion:'Eliminamos micro rayas, opacidad y remolinos. Devolvemos el brillo profundo de fábrica.',variantes:['Barniz N1 y N2','Pulido básico','Microbollos','Pulido de ópticas']},
@@ -568,6 +734,7 @@ servicios.forEach(s=>{
     '<div class="svc__panel">'+
       '<p class="svc__desc">'+s.descripcion+'</p>'+
       '<div class="svc__chips">'+starChip+chips+'</div>'+
+      '<button class="svc__consult" data-svc="'+s.id+'">Consultar</button>'+
     '</div>';
 
   svcGrid.appendChild(card);
@@ -585,6 +752,7 @@ servicios.forEach(s=>{
   };
 
   const onClick=e=>{
+    if(e.target.closest('.svc__consult'))return;
     const card=e.target.closest('.svc');
     cards.forEach(c=>{if(c!==card)c.classList.remove('is-open')});
     if(card&&grid.contains(card))card.classList.toggle('is-open');
@@ -601,8 +769,94 @@ servicios.forEach(s=>{
   document.addEventListener('keydown',onKey);
 })();
 
+document.querySelectorAll('.svc__consult').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    window.dispatchEvent(new CustomEvent('open-wa-panel',{detail:{preselect:btn.dataset.svc}}));
+  });
+});
+
+// ===== ANTES Y DESPUÉS =====
+const baGroups=[
+  {label:'Corrección de pintura',items:['correccion-pintura-corvette','correccion-pintura-clio','correccion-pintura-macro']},
+  {label:'Pulido',items:['pulido-sw4-frente']},
+  {label:'Ópticas',items:['opticas-amarok','opticas-fiat','opticas-corolla','opticas-ka']},
+  {label:'Llantas y calipers',items:['llantas-sw4-lateral','llantas-lavado','calipers-alfa']},
+  {label:'Motor',items:['motor-clio']},
+  {label:'Bajos',items:['bajos-hilux-delantero','bajos-hilux-trasero']},
+  {label:'Cuero',items:['cuero-amarok']},
+];
+const baTabs=document.getElementById('baTabs');
+const baThumbs=document.getElementById('baThumbs');
+const baBefore=document.getElementById('baBefore');
+const baAfter=document.getElementById('baAfter');
+const baStage=document.getElementById('baStage');
+const baHandle=document.getElementById('baHandle');
+let baGroup=0,baItem=0;
+
+function baRender(){
+  const group=baGroups[baGroup];
+  baThumbs.innerHTML='';
+  group.items.forEach((slug,i)=>{
+    const t=document.createElement('div');
+    t.className='ba-thumb'+(i===baItem?' active':'');
+    t.style.backgroundImage='url(/'+slug+'-antes.webp)';
+    t.addEventListener('click',()=>{baItem=i;baRender();baLoad()});
+    baThumbs.appendChild(t);
+  });
+}
+function baLoad(){
+  const slug=baGroups[baGroup].items[baItem];
+  baBefore.src='/'+slug+'-antes.webp';
+  baAfter.src='/'+slug+'-despues.webp';
+}
+baGroups.forEach((g,i)=>{
+  const b=document.createElement('button');
+  b.className='ba-tab'+(i===0?' active':'');
+  b.textContent=g.label;
+  b.addEventListener('click',()=>{baGroup=i;baItem=0;baTabs.querySelectorAll('.ba-tab').forEach((t,j)=>t.classList.toggle('active',j===i));baRender();baLoad()});
+  baTabs.appendChild(b);
+});
+baRender();baLoad();
+
+// slider drag
+let baDragging=false;
+function baSetPct(pct){
+  pct=Math.max(0,Math.min(100,pct));
+  baAfter.style.clipPath='inset(0 0 0 '+pct+'%)';
+  baHandle.style.left=pct+'%';
+}
+function baMoveX(clientX){
+  const r=baStage.getBoundingClientRect();
+  baSetPct(((clientX-r.left)/r.width)*100);
+}
+baHandle.addEventListener('mousedown',e=>{baDragging=true;e.preventDefault()});
+baStage.addEventListener('mousedown',e=>{baDragging=true;baMoveX(e.clientX);e.preventDefault()});
+addEventListener('mousemove',e=>{if(baDragging)baMoveX(e.clientX)});
+addEventListener('mouseup',()=>baDragging=false);
+baStage.addEventListener('touchstart',e=>{baDragging=true;baMoveX(e.touches[0].clientX)},{passive:true});
+addEventListener('touchmove',e=>{if(baDragging)baMoveX(e.touches[0].clientX)},{passive:true});
+addEventListener('touchend',()=>baDragging=false);
+baSetPct(50);
+
+// ===== CÓMO TRABAJAMOS (React) =====
+
+// ===== VALUES ANIMATION =====
+const valObserver=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.val').forEach(v=>v.classList.add('val-fill'));
+      valObserver.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+const valGrid=document.querySelector('.val-grid');
+if(valGrid)valObserver.observe(valGrid);
+
 // year
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
+<div id="waPanelRoot"></div>
+<script type="module" src="/src/gallery.jsx"></script>
+<script type="module" src="/src/whatsapp-lead-panel.jsx"></script>
 </body>
 </html>
